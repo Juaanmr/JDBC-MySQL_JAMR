@@ -28,7 +28,7 @@ public class ProyectoBD1 {
                 ResultSet rs = stmt.executeQuery(QUERY);) {
             // Extrae la informacion del set de resultados
             while(rs.next()){
-                //Obtiene la info segun el nombre de la columna
+                //Obtiene la info segun el nombre de la columna de la base de datos
                 System.out.print("ID: " +rs.getInt("id"));
                 System.out.print(", Nombre: " +rs.getString("Nombre"));
                 System.out.print(", Genero: " +rs.getString("Genero"));
@@ -43,9 +43,12 @@ public class ProyectoBD1 {
             stmt.executeUpdate(QUERY3);
             System.out.println("Videojuego eliminadisimooooooooo");
             
-            //Cerramos el Statement
+            //Cerramos el Statement el ResultSet y la conexion 
             stmt.close();
+            rs.close();
+            conn.close();
         } catch (Exception e) {
+            //excepcion que salta si hay algun error durante la ejecucion
             e.printStackTrace();
         }
     }
